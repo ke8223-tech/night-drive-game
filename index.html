@@ -9,26 +9,70 @@
 </head>
 <body>
 
-    <div class="game-container">
+<div class="game-container">
 
+    <header>
         <h1>NIGHT DRIVE</h1>
         <p class="subtitle">THE CITY NEVER SLEEPS</p>
+    </header>
 
-        <div class="menu">
-            <h2>READY TO RACE?</h2>
-            <p>Choose your car and enter the streets.</p>
+    <!-- MAIN MENU -->
+    <section id="menu-screen">
+        <h2>READY TO RACE?</h2>
+        <p>Choose your car and enter the streets.</p>
 
-            <div class="car-selection">
-                <button>BLUE RACER</button>
-                <button>RED RACER</button>
-                <button>PURPLE RACER</button>
-            </div>
-
-            <button id="start-button">START RACING</button>
+        <div class="car-selection">
+            <button class="car-button" data-car="blue">BLUE RACER</button>
+            <button class="car-button" data-car="red">RED RACER</button>
+            <button class="car-button" data-car="purple">PURPLE RACER</button>
         </div>
 
-    </div>
+        <p id="selected-car">Selected: BLUE RACER</p>
+        <button id="start-button">START RACING</button>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- RACING SCREEN -->
+    <section id="game-screen" class="hidden">
+
+        <div class="game-stats">
+            <div>SCORE: <span id="score">0</span></div>
+            <div>COINS: <span id="coins">0</span></div>
+            <div>LIVES: <span id="lives">❤️❤️❤️</span></div>
+        </div>
+
+        <div id="race-area">
+            <div class="city-glow"></div>
+
+            <div class="road">
+                <div class="road-lines"></div>
+                <div id="player-car" class="car blue"></div>
+                <div id="traffic-container"></div>
+                <div id="coin-container"></div>
+            </div>
+        </div>
+
+        <div class="mission">
+            <h3>CURRENT MISSION</h3>
+            <p id="mission-text">Avoid traffic and survive!</p>
+        </div>
+
+        <div class="controls">
+            <button id="left-button">⬅ LEFT</button>
+            <button id="right-button">RIGHT ➡</button>
+        </div>
+
+    </section>
+
+    <!-- GAME OVER SCREEN -->
+    <section id="game-over-screen" class="hidden">
+        <h2>RACE OVER</h2>
+        <p>Your final score:</p>
+        <h3 id="final-score">0</h3>
+        <button id="restart-button">RACE AGAIN</button>
+    </section>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
