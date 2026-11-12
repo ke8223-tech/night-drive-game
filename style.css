@@ -6,109 +6,208 @@
 }
 
 body {
-    background: #080817;
-    font-family: Arial, sans-serif;
+    background: #070713;
     color: white;
+    font-family: Arial, sans-serif;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
+    padding: 20px;
 }
 
 .game-container {
-    width: 90%;
-    max-width: 900px;
-    min-height: 550px;
-    padding: 45px 20px;
+    width: 100%;
+    max-width: 850px;
+    padding: 30px;
     text-align: center;
-    background: linear-gradient(145deg, #17102f, #09091c);
+    background: linear-gradient(145deg, #17102f, #080817);
     border: 2px solid #8b35ff;
     border-radius: 20px;
     box-shadow: 0 0 30px #7025ff66;
 }
 
 h1 {
-    font-size: 65px;
-    letter-spacing: 8px;
-    color: #fff;
-    text-shadow:
-        0 0 10px #a855ff,
-        0 0 25px #a855ff,
-        0 0 45px #ff36bd;
+    font-size: 55px;
+    letter-spacing: 7px;
+    text-shadow: 0 0 20px #a855ff;
 }
 
 .subtitle {
     color: #29e8ff;
-    letter-spacing: 6px;
-    margin-top: 12px;
-    font-size: 13px;
+    letter-spacing: 5px;
+    margin: 10px 0 30px;
 }
 
-.menu {
-    margin-top: 85px;
-}
-
-.menu h2 {
+h2 {
     color: #ff45c8;
-    font-size: 28px;
     margin-bottom: 15px;
-    text-shadow: 0 0 12px #ff45c8;
-}
-
-.menu p {
-    color: #c7c7dc;
-    margin-bottom: 30px;
-}
-
-.car-selection {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-    margin-bottom: 35px;
 }
 
 button {
+    padding: 13px 20px;
     background: transparent;
-    color: #28eaff;
     border: 2px solid #28eaff;
-    padding: 13px 22px;
     border-radius: 8px;
+    color: #28eaff;
     cursor: pointer;
     font-weight: bold;
-    transition: 0.3s;
+    margin: 8px;
 }
 
 button:hover {
     background: #28eaff;
     color: #080817;
-    box-shadow: 0 0 20px #28eaff;
-    transform: translateY(-3px);
+    box-shadow: 0 0 15px #28eaff;
 }
 
-#start-button {
+#start-button, #restart-button {
     background: #a52cff;
-    border: 2px solid #d18cff;
     color: white;
-    padding: 16px 45px;
-    font-size: 17px;
-    letter-spacing: 2px;
-    box-shadow: 0 0 20px #a52cff88;
+    border-color: #d18cff;
+    padding: 15px 35px;
 }
 
-#start-button:hover {
-    background: #ff36bd;
-    box-shadow: 0 0 25px #ff36bd;
+.car-selection {
+    margin: 25px 0;
+}
+
+#selected-car {
+    color: #29e8ff;
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    margin: 20px 0;
+    color: #29e8ff;
+    font-weight: bold;
+    flex-wrap: wrap;
+}
+
+#race-area {
+    height: 440px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#11112b, #30144b);
+    border-radius: 12px;
+}
+
+.city-glow {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(90deg, #9e37ff33 2%, transparent 15%),
+        linear-gradient(270deg, #28eaff33 2%, transparent 15%);
+}
+
+.road {
+    width: 65%;
+    height: 100%;
+    position: absolute;
+    left: 17.5%;
+    background: #252535;
+    border-left: 5px solid #e53bff;
+    border-right: 5px solid #28eaff;
+    overflow: hidden;
+}
+
+.road-lines {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 45px,
+        #ffffff 45px,
+        #ffffff 75px,
+        transparent 75px,
+        transparent 120px
+    );
+    background-size: 100% 120px;
+    animation: roadMove 0.7s linear infinite;
+}
+
+@keyframes roadMove {
+    from { background-position-y: 0; }
+    to { background-position-y: 120px; }
+}
+
+.car {
+    position: absolute;
+    width: 42px;
+    height: 75px;
+    border-radius: 13px 13px 8px 8px;
+    border: 3px solid white;
+    box-shadow: 0 0 18px currentColor;
+}
+
+#player-car {
+    bottom: 25px;
+    left: calc(50% - 21px);
+    z-index: 5;
+}
+
+.blue {
+    background: #168cff;
+    color: #168cff;
+}
+
+.red {
+    background: #ff3030;
+    color: #ff3030;
+}
+
+.purple {
+    background: #a52cff;
+    color: #a52cff;
+}
+
+.traffic-car {
+    position: absolute;
+    width: 42px;
+    height: 70px;
+    border-radius: 12px;
+    background: #ff3030;
+    border: 3px solid white;
+    box-shadow: 0 0 15px #ff3030;
+    z-index: 4;
+}
+
+.coin {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #ffe45e;
+    border: 3px solid #ff9d00;
+    box-shadow: 0 0 15px #ffe45e;
+    z-index: 4;
+}
+
+.mission {
+    margin: 20px 0;
+    color: #ff45c8;
+}
+
+.mission p {
+    color: white;
+    margin-top: 8px;
+}
+
+.controls {
+    margin: 15px;
 }
 
 @media (max-width: 600px) {
-    h1 {
-        font-size: 38px;
-        letter-spacing: 4px;
-    }
-
-    .menu {
-        margin-top: 60px;
-    }
+    h1 { font-size: 34px; }
+    .game-container { padding: 15px; }
+    #race-area { height: 380px; }
+    .road { width: 80%; left: 10%; }
 }
